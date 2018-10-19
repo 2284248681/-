@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manage</title>
+    <link rel="stylesheet" href="css/manage.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="header">
+    <div class="logo left">
+        后台管理页面
+    </div>
+
+    <div class="user right" style="position: relative" id="user">
+        <a class="a" href="#" id="headimg">
+            <img src="images/avatar.png" class="headimg">
+        </a>
+        <div class="b bactive" id="uploadimg">
+            <a href="#">上传头像</a>
+        </div>
+        <div class="b bactive" id="logout">
+            <a href="#">注销</a>
+        </div>
+    </div>
+</div>
+
+<!--菜单和内容部分-->
+<div class="content">
+    <div class="menu left" id="menu">
+        <div class="m" id="firstpagebtn">首页</div>
+        <div class="m" id="searchuserbtn">用户</div>
+        <div class="m" id="searchfoodbtn">食品</div>
+    </div>
+    
+
+    <div class="content left contentshadow contentbgi" id="firstpage">
+        <div>
+            <p class="adminword">您好，administer</p>
+            <p class="welcome">欢迎来到管理界面</p>
+        </div>
+    </div>
+
+    <div class="content left contentshadow" id="searchuser" style="display: none;">
+        <div class="typepage setpadding">
+            <!--<form>-->
+                <input type="text" placeholder="请输入你想查询的用户" class="selectbox" id="userkeywd">
+                <input type="submit" value="搜索" class="searchbox" onclick="searchuser()">
+            <!--</form>-->
+        </div>
+        <script type="text/javascript">
+            function searchuser() {
+                //1,获得标签节点
+                let userkeywd = document.getElementById('userkeywd');
+
+                //2,提交数据到后台服务器
+                $.ajax({
+                    url: 'manage',
+                    type: "POST",
+                    data: {
+                        keywd: userkeywd.value,
+                    },
+                    traditional: true,//这里设置为true
+                    success: function(data) {
+                        alert(data);
+                    }
+                });
+                console.log("查询数据提交至后台");
+            }
+        </script>
+
+        <div class="typepage tablepadding">
+            <table class="tablestyle">
+                <thead>
+                    <td>id</td>
+                    <td>昵称</td>
+                    <td>账号</td>
+                    <td>密码</td>
+                    <td>头像</td>
+                    <td>邮箱地址</td>
+                </thead>
+                <tbody>
+                <%user.forEach(function(user) {%>
+                    <tr>
+                        <td><%=user.id%></td>
+                        <td><%=user.nickname%></td>
+                        <td><%=user.username%></td>
+                        <td><%=user.pwd%></td>
+                        <td><%=user.headimg%></td>
+                        <td><%=user.email%></td>
+                    </tr>
+                <%})%>
+                </tbody>
+            </table>
+            <input type="submit" value="增加">
+            <input type="submit" value="删除">
+            <input type="submit" value="修改">
+            <input type="submit" value="提交">
+        </div>
+        <!--<script>-->
+            <!--function submitdata () {-->
+                <!--$(".data").each(-->
+                    <!--$(this).attr("disabled","disabled");-->
+                <!--);-->
+            <!--}-->
+        <!--</script>-->
+
+    </div>
+
+    <div class="content left contentshadow" id="searchfood" style="display: none;">
+        <div class="typepage setpadding">
+            <form action="" method="post">
+                <input type="text" placeholder="请输入你想查询的食品" class="selectbox">
+                <input type="submit" value="搜索" class="searchbox">
+            </form>
+        </div>
+    </div>
+
+    <input type="button" class="return" value="返回顶部"></input>
+    
+    <script type="text/javascript" src="js/manage.js"></script>
+</div>
+</body>
+</html>

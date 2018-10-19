@@ -1,0 +1,53 @@
+<div class="header-in">
+    <div class="container">
+        <div class="logo">
+            <h1><a href="index">Food Shop</a></h1>
+        </div>
+        <div class="header-top">
+            <div class="header-top-in">
+                <ul class="header-grid">
+                    <li ><a href="account">My Account   </a> <label>/</label></li>
+                    <li ><a href="login">  Login </a> </li>		
+                </ul>
+                <div class="act">
+                    <a href="#" class="done">Donec actortor </a>
+                </div>
+            <div class="clearfix"> </div>
+            </div>
+            <ul class="grid-header">
+                <li><a href="account">My Account</a> <label>/</label></li>
+                <li><a href="#">My Cart</a> <label>/</label></li>
+                <li><a href="checkout">  Checkout </a> </li>		
+            </ul>
+            <div class="clearfix"> </div>
+        </div>
+        <!---->
+        <div class="header-bottom">
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul>
+                    <li  ><a href="index" >Home  </a><label>- </label> </li>
+                    <li class="active"><a href="location" > Locations</a><label>- </label></li>
+                    <li><a href="specials">Specials </a><label>- </label></li>
+                    <li><a href="404" > Order Online</a><label>- </label></li>
+                    <li><a href="contact">Contacts</a></li>
+                </ul>
+                <!--script-->
+            <script>
+                $("span.menu").click(function(){
+                    $(".top-nav ul").slideToggle(500, function(){
+                    });
+                });
+        </script>
+            </div>
+                <div class="search">
+                    <form>
+                        <input type="text" value="Search store here ..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+                        <input type="submit" value="">
+                    </form>
+                </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!---->
+    </div>
+</div> 
